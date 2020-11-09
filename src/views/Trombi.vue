@@ -81,7 +81,6 @@ export default defineComponent({
     )
     console.log(keyword)
     return {
-
       people: filtered,
       keyword
     }
