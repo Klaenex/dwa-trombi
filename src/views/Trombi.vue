@@ -9,6 +9,7 @@
       id="search"
       class="search"
       placeholder="Prénom"
+      v-model="keyword"
     />
     <hr />
     <ul class="grid">
@@ -60,17 +61,29 @@
     }
   }
 }
+
 </style>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, computed, ref } from 'vue'
 import data from '@/inc/data'
 
 export default defineComponent({
   name: 'Trombi',
   setup() {
+    const keyword = ref('')
+    
+    const filtered= computed(()=>
+      data.b3g1.filter(p=> 
+      p.firstname.toLowerCase().includes(keyword.value.toLowerCase())
+
+     )
+    )
+    console.log(keyword)
     return {
-      people: data.b3g1,
+
+      people: filtered,
+      keyword
     }
   },
 })
